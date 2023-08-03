@@ -27,12 +27,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -90,9 +95,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -100,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "38302c58-08a0-44a7-9156-08febe57a9ee"
   }
 }
