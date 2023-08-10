@@ -8,9 +8,9 @@ const galerieController = require('../controllers/galerie');
 
 router.post('/', auth, multer, galerieController.createGalerie);
 
-router.get('/:id', auth, galerieController.getOneGalerie);
+router.get('/:id', galerieController.getOneGalerie);
 
-router.get('/', auth, galerieController.getAllGalerie);
+router.get('/', galerieController.getAllGalerie);
 
 router.put('/:id', auth, multer, galerieController.modifyGalerie);
 

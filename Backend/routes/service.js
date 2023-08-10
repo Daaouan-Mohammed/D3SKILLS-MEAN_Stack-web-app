@@ -8,9 +8,9 @@ const serviceController = require('../controllers/service');
 
 router.post('/', auth, multer, serviceController.createService);//L'ordre des middlewares est important
 
-router.get('/:id', auth, serviceController.getOneService);
+router.get('/:id', serviceController.getOneService);
 
-router.get('/', auth, serviceController.getAllServices);
+router.get('/', serviceController.getAllServices);
 
 router.put('/:id', auth, multer, serviceController.modifyService);
 

@@ -6,6 +6,12 @@ const mongoose = require('mongoose');
 
 const path = require('path');
 
+const serviceRoutes = require('./routes/service');
+const subServiceRoutes = require('./routes/subService');
+const referenceRoutes = require('./routes/reference');
+const galerieRoutes = require('./routes/galerie');
+const userRoutes = require('./routes/user');
+
 mongoose.connect('mongodb+srv://mohammed:AbCd2016@cluster0.rpygsuh.mongodb.net/?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
@@ -25,9 +31,11 @@ app.use((req, res, next) => {  //plus que c'est le 1er middleware executé donc 
     next();
 });
 
-app.use((req, res) => {
-   res.json({ message: 'vous avez bien connecter!' }); 
-});
-
+app.use('/api/auth', userRoutes);
+app.use('/api/services', serviceRoutes);
+app.use('/api/services/:id/subServices', subServiceRoutes);
+app.use('/api/references', referenceRoutes);
+app.use('/api/galerie', galerieRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));//__dirname = directory name
 
 module.exports = app;

@@ -8,9 +8,9 @@ const referenceController = require('../controllers/reference');
 
 router.post('/', auth, multer, referenceController.createReference);
 
-router.get('/:id', auth, referenceController.getOneReference);
+router.get('/:id', referenceController.getOneReference);
 
-router.get('/', auth, referenceController.getAllReferences);
+router.get('/', referenceController.getAllReferences);
 
 router.put('/:id', auth, multer, referenceController.modifyReference);
 
