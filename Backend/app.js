@@ -26,7 +26,7 @@ app.use((req, res, next) => {  //plus que c'est le 1er middleware executé donc 
 });
 
 app.use((req, res) => {
-   res.json({ message: 'Votre requête use a bien été reçue avec connection to mongodb!' }); 
+   res.json({ message: 'vous avez bien connecter!' }); 
 });
 
 
