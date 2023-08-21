@@ -18,6 +18,7 @@ import { HeadersComponent } from './components/headers/headers.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { Contact2Component } from './components/contact2/contact2.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { Contact2Component } from './components/contact2/contact2.component';
     HeadersComponent,
     FooterComponent,
     AccueilComponent,
-    Contact2Component
+    Contact2Component,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
