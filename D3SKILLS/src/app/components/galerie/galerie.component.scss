@@ -1,0 +1,31 @@
+.blog-posts {
+    height: 800px;
+    width: 650px;
+    padding: 20px; /* Add padding for spacing */
+  
+    /* Add a border with rounded corners */
+    border-radius: 8px;
+  
+    /* Apply vertical scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+    &::-webkit-scrollbar {
+      width: 8px; /* Customize scrollbar width */
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #555; /* Scrollbar thumb color */
+      border-radius: 8px;
+  
+      &:hover {
+        background: #333; /* Scrollbar thumb color on hover */
+      }
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Scrollbar track color */
+      border-radius: 8px;
+    }
+  }
+  
