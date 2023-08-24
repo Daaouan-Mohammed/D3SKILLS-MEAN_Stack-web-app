@@ -1,0 +1,8 @@
+<nb-layout>
+    <nb-layout-column style="background-image: url('../../../assets/images/login_image.png'); background-size: 100% 100%; display: flex; justify-content: space-between;">
+        <img src="../../../assets/images/transparent-logo small.png" alt="" style="height: 400px; width: 400px;">
+        <div class="button-container">
+            <button mat-raised-button (click)="openDialog('1000ms', '500ms')" *ngIf="!userInfo()" class="custom-button">D3 SKILLS Administration</button>
+        </div>
+    </nb-layout-column>
+</nb-layout>

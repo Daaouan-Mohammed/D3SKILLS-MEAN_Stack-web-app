@@ -1,0 +1,23 @@
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 500px;
+  
+    .custom-button {
+      background-color: orange;
+      color: white;
+      padding: 12px 24px;
+      border: 2px solid ; 
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+  
+      &:hover {
+        background-color: #007bff;
+        transform: scale(1.05);
+      }
+    }
+  }
+  

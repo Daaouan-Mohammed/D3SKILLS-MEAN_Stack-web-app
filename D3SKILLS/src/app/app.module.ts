@@ -8,6 +8,7 @@ import { NbCardModule, NbLayoutModule, NbThemeModule } from '@nebular/theme';
 import {MatCardModule} from '@angular/material/card';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AProposComponent } from './components/a-propos/a-propos.component';
 import { ServicesComponent } from './components/services/services.component';
@@ -19,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { Contact2Component } from './components/contact2/contact2.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { LayoutComponent } from './components/layout/layout.component';
     NbCardModule,
     CarouselModule,
     NbLayoutModule,
+    MatDialogModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
