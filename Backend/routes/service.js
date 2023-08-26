@@ -6,14 +6,14 @@ const multer = require('../middlewares/multer-config');
 
 const serviceController = require('../controllers/service');
 
-router.post('/', auth, multer, serviceController.createService);//L'ordre des middlewares est important
+router.post('/', multer, serviceController.createService);//L'ordre des middlewares est important
 
 router.get('/:id', serviceController.getOneService);
 
 router.get('/', serviceController.getAllServices);
 
-router.put('/:id', auth, multer, serviceController.modifyService);
+router.put('/:id', multer, serviceController.modifyService);
 
-router.delete('/:id', auth, serviceController.deleteService);
+router.delete('/:id', serviceController.deleteService);
 
 module.exports= router;

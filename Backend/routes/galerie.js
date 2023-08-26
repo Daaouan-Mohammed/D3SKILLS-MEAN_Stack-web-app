@@ -6,14 +6,14 @@ const multer = require('../middlewares/multer-config');
 
 const galerieController = require('../controllers/galerie');
 
-router.post('/', auth, multer, galerieController.createGalerie);
+router.post('/', multer, galerieController.createGalerie);
 
 router.get('/:id', galerieController.getOneGalerie);
 
 router.get('/', galerieController.getAllGalerie);
 
-router.put('/:id', auth, multer, galerieController.modifyGalerie);
+router.put('/:id', multer, galerieController.modifyGalerie);
 
-router.delete('/:id', auth, galerieController.deleteGalerie);
+router.delete('/:id', galerieController.deleteGalerie);
 
 module.exports= router;

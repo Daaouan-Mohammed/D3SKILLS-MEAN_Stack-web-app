@@ -1,4 +1,5 @@
 import { DialogRef } from '@angular/cdk/dialog';
+import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +14,7 @@ export class LoginFormComponent {
   LoginForm: FormGroup;
   errorMsg: any;
   hide = true;
-  error!: boolean ;
+  error!: boolean;
   show!: boolean;
   sendData!: boolean;
 
@@ -29,30 +30,13 @@ export class LoginFormComponent {
     })
   }
 
-  OnFormLogin() { 
-    let email = this.LoginForm.value.email;
-    let password = this.LoginForm.value.password;
-    const loginInput={email,password}
- /*   this._login.loginUser(loginInput).subscribe((result:any)=>{
-     console.log(result.data.loginUser.token);
-      if (result){
-        localStorage.setItem('token', result.data.loginUser.token);
-        localStorage.setItem('authUser', JSON.stringify(result.data.loginUser));
-        console.log('login correct');
-       //  this._login.updateStateSession(true);
-        this._router.navigate(['/admin']);
-        this._dialogRef.close();      
-      } else {
-        this.error = true;
-        this.show = true;
-       //  this._login.updateStateSession(false);
-        localStorage.removeItem('token');
-        console.log('login incorrecto');
-        this.sendData = false;
-      }
-    })*/
-    console.log('login correct');
-     this._router.navigate(['/admin']);
-     this._dialogRef.close();   
- }
+  OnFormLogin(email: string, password: string) {
+    this._login.login(email, password).subscribe((res: HttpResponse<any>) => {
+      localStorage.setItem('token',res.body.token);
+      localStorage.setItem('userId',res.body.userId);
+      console.log(res);
+      this._router.navigate(['/admin']);
+      this._dialogRef.close();
+    })
+  }
 }

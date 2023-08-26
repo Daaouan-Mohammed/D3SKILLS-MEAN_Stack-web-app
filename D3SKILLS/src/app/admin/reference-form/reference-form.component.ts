@@ -2,28 +2,27 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ServicesService } from 'src/app/services/services.service';
+import { ReferencesService } from 'src/app/services/references.service';
 
 @Component({
-  selector: 'app-service-form',
-  templateUrl: './service-form.component.html',
-  styleUrls: ['./service-form.component.scss']
+  selector: 'app-reference-form',
+  templateUrl: './reference-form.component.html',
+  styleUrls: ['./reference-form.component.scss']
 })
-export class ServiceFormComponent {
-
-  ServiceForm: FormGroup;
+export class ReferenceFormComponent {
+  ReferenceForm: FormGroup;
   errorMsg: any;
   selectedFile: any;
 
 
   constructor(
-    private _services: ServicesService,
+    private _services: ReferencesService,
     private _fb: FormBuilder,
-    private _dialogRef: DialogRef<ServiceFormComponent>,
+    private _dialogRef: DialogRef<ReferenceFormComponent>,
 //    private Activeroute: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    this.ServiceForm = this._fb.group({
+    this.ReferenceForm = this._fb.group({
       title: this._fb.control(""),
       description: this._fb.control(""),
       file: this._fb.control(""),
@@ -35,7 +34,7 @@ export class ServiceFormComponent {
   }
 
   OnSave() {
-    if (this.ServiceForm.valid) {
+    if (this.ReferenceForm.valid) {
       if (this.data) {
     /*    this._services.updateService(this.data.id, input).subscribe(({ data }) => {
           console.log(data);
@@ -45,7 +44,7 @@ export class ServiceFormComponent {
         this._dialogRef.close();
       }
       else {
-        this._services.createService(this.ServiceForm.value).subscribe((response: any) => {
+        this._services.createReference(this.ReferenceForm.value).subscribe((response: any) => {
           console.log(response);
           this._dialogRef.close();
         //  this._services.getServices();

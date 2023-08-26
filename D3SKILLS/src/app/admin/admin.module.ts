@@ -11,14 +11,19 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { ServiceFormComponent } from './service-form/service-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { WebReqInterceptor } from '../services/web-req.interceptor';
+import { ReferenceFormComponent } from './reference-form/reference-form.component';
+import { GalerieFormComponent } from './galerie-form/galerie-form.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AuthComponent,
     LoginFormComponent,
-    ServiceFormComponent
+    ServiceFormComponent,
+    ReferenceFormComponent,
+    GalerieFormComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatTableModule,
     HttpClientModule
-  ]
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true}
+  ],
 })
 export class AdminModule { }

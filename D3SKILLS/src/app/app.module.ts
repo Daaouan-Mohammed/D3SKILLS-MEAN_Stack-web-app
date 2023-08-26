@@ -20,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { Contact2Component } from './components/contact2/contact2.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { WebReqInterceptor } from './services/web-req.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,9 @@ import { HttpClientModule } from '@angular/common/http';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

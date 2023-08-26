@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -8,7 +10,14 @@ import { LoginFormComponent } from '../login-form/login-form.component';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private _login: LoginService, private _router: Router) {}
+
+  ngOnInit(): void {
+    if(this._login.isLoggedIn())
+    {
+      this._router.navigate(['/admin'])
+    }
+}
 
   userInfo() {
     if(localStorage.getItem("token")){

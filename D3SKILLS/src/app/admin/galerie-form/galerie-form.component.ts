@@ -1,29 +1,28 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component ,Inject} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ServicesService } from 'src/app/services/services.service';
+import { GalerieService } from 'src/app/services/galerie.service';
 
 @Component({
-  selector: 'app-service-form',
-  templateUrl: './service-form.component.html',
-  styleUrls: ['./service-form.component.scss']
+  selector: 'app-galerie-form',
+  templateUrl: './galerie-form.component.html',
+  styleUrls: ['./galerie-form.component.scss']
 })
-export class ServiceFormComponent {
-
-  ServiceForm: FormGroup;
+export class GalerieFormComponent {
+  GalerieForm: FormGroup;
   errorMsg: any;
   selectedFile: any;
 
 
   constructor(
-    private _services: ServicesService,
+    private _galerie: GalerieService,
     private _fb: FormBuilder,
-    private _dialogRef: DialogRef<ServiceFormComponent>,
+    private _dialogRef: DialogRef<GalerieFormComponent>,
 //    private Activeroute: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    this.ServiceForm = this._fb.group({
+    this.GalerieForm = this._fb.group({
       title: this._fb.control(""),
       description: this._fb.control(""),
       file: this._fb.control(""),
@@ -35,7 +34,7 @@ export class ServiceFormComponent {
   }
 
   OnSave() {
-    if (this.ServiceForm.valid) {
+    if (this.GalerieForm.valid) {
       if (this.data) {
     /*    this._services.updateService(this.data.id, input).subscribe(({ data }) => {
           console.log(data);
@@ -45,7 +44,7 @@ export class ServiceFormComponent {
         this._dialogRef.close();
       }
       else {
-        this._services.createService(this.ServiceForm.value).subscribe((response: any) => {
+        this._galerie.createGalerie(this.GalerieForm.value).subscribe((response: any) => {
           console.log(response);
           this._dialogRef.close();
         //  this._services.getServices();

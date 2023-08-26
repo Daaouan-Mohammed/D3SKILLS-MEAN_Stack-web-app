@@ -6,14 +6,14 @@ const multer = require('../middlewares/multer-config');
 
 const subServiceController = require('../controllers/subService');
 
-router.post('/', auth, multer, subServiceController.createSubService);
+router.post('/', multer, subServiceController.createSubService);
 
 router.get('/:id', subServiceController.getOneSubService);
 
 router.get('/', subServiceController.getAllSubServices);
 
-router.put('/:id', auth, multer, subServiceController.modifySubService);
+router.put('/:id', multer, subServiceController.modifySubService);
 
-router.delete('/:id', auth, subServiceController.deleteSubService);
+router.delete('/:id', subServiceController.deleteSubService);
 
 module.exports= router;

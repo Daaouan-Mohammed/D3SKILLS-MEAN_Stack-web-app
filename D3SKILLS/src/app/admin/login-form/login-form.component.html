@@ -7,16 +7,16 @@
                     <h4 class="mt-1 mb-5 pb-1">Administrative Team</h4>
                 </div>
 
-                <form [formGroup]="LoginForm" (ngSubmit)="OnFormLogin()" class="form">
+                <form [formGroup]="LoginForm" (ngSubmit)="OnFormLogin(emailInput.value, passwordInput.value)" class="form">
                     <p>Please login to your account</p>
                     <div *ngIf="errorMsg" class="error-message">{{errorMsg}}</div>
                     <div class="form-outline mb-4">
-                        <input id="form2Example11" class="form-control" type="email" placeholder="example@gmail.com" formControlName="email">
+                        <input #emailInput id="form2Example11" class="form-control" type="email" placeholder="example@gmail.com" formControlName="email">
                         <label class="form-label" for="form2Example11">Email</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input id="form2Example22" class="form-control" [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                        <input #passwordInput id="form2Example22" class="form-control" [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
                         <label class="form-label" for="form2Example22">Password</label>
                     </div>
 
