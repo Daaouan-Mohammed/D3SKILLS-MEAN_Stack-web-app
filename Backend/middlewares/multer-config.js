@@ -8,7 +8,7 @@ const MIME_TYPES = {   //un dictionnaire pour les extension des fichiers telecha
 
 const storage = multer.diskStorage({          //la methode diskStorage indique que nous enregistrons les fichiers dans le disk. Et prend 2 methode:destination et filename
   destination: (req, file, callback) => {
-    callback(null, 'images');     //images est le nom de dossier où on save les fichiers
+    callback(null, 'image');     //images est le nom de dossier où on save les fichiers
   },
   filename: (req, file, callback) => {
     const name = file.originalname.split(' ').join('_');   //prend nom d'origine de fichier et remplacer ' ' par '_'
