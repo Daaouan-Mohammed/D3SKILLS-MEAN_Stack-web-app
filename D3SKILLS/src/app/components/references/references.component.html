@@ -21,16 +21,16 @@
     <section class="partners">
       <div class="containers">
         <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide>
+          <ng-template carouselSlide *ngFor="let ref of references">
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
-                    <img src="assets/images/logo.png" alt="">
+                    <img src={{ref.imageUrl}} alt="">
                   </div>
                   <div class="down-content">
-                    <h4>Website Builder</h4>
-                    <span>Marketing</span>
+                    <h4>{{ref.title}}</h4>
+                    <span>{{ref.description}}</span>
                   </div>
                 </div>
               </a>
@@ -38,7 +38,7 @@
           </ng-template>
           <ng-template carouselSlide>
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
                     <img src="assets/images/logo-CAP-SUP.jpg" alt="">
@@ -53,7 +53,7 @@
           </ng-template>
           <ng-template carouselSlide>
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
                     <img src="assets/images/portfolio-01.jpg" alt="">
@@ -68,7 +68,7 @@
           </ng-template>
           <ng-template carouselSlide>
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
                     <img src="assets/images/portfolio-01.jpg" alt="">
@@ -83,7 +83,7 @@
           </ng-template>
           <ng-template carouselSlide>
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
                     <img src="assets/images/portfolio-01.jpg" alt="">
@@ -98,7 +98,7 @@
           </ng-template>
           <ng-template carouselSlide>
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
                     <img src="assets/images/portfolio-01.jpg" alt="">
@@ -113,7 +113,7 @@
           </ng-template>
           <ng-template carouselSlide>
             <div class="item">
-              <a href="#">
+              <a>
                 <div class="portfolio-item">
                   <div class="thumb">
                     <img src="assets/images/portfolio-01.jpg" alt="">
@@ -126,7 +126,7 @@
               </a>
             </div>
           </ng-template>
-
+ 
         </owl-carousel-o>
       </div>
     </section>

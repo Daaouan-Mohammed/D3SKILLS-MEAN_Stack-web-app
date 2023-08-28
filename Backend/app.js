@@ -38,6 +38,6 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/services/:id/subServices', subServiceRoutes);
 app.use('/api/references', referenceRoutes);
 app.use('/api/galerie', galerieRoutes);
-app.use('/images', express.static(path.join(__dirname, 'images')));//__dirname = directory name
+app.use('/image', express.static(path.join(__dirname, 'image')));//__dirname = directory name
 
 module.exports = app;

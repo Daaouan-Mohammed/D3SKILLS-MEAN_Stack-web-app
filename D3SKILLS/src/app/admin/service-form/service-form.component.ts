@@ -17,7 +17,6 @@ export class ServiceFormComponent {
   loading: boolean = false; // Flag variable
   shortLink: string = "";
 
-
   constructor(
     private _services: ServicesService,
     private _fb: FormBuilder,
@@ -61,10 +60,17 @@ export class ServiceFormComponent {
       if (this.selectedFile) {
         formData.append("image", this.selectedFile);
       }
-
       this.loading = true;
-      this._services.createService(formData).subscribe(
-        (response: any) => {
+      if (this.data) {
+        /* this._gig.updateGig(this.data.id, input).subscribe(({ data }) => {
+           console.log(data);
+           this._dialogRef.close();
+           this._snackbar.openSnackBar('Gig updated successfully');
+           this._gig.getGigs();
+         })*/
+      }
+      else {
+        this._services.createService(formData).subscribe((response: any) => {
           console.log(response);
           console.log(response.imageUrl);
           const savedData = {
@@ -77,12 +83,13 @@ export class ServiceFormComponent {
           this.loading = false;
           this._dialogRef.close();
         },
-        (error: any) => {
-          console.log("not working");
-          console.error(error);
-          this.loading = false;
-        }
-      );
+          (error: any) => {
+            console.log("upload image not working");
+            console.error(error);
+            this.loading = false;
+          }
+        );
+      }
     }
   }
 }

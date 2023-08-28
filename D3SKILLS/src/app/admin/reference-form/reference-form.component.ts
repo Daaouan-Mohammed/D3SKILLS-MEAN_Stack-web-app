@@ -10,13 +10,15 @@ import { ReferencesService } from 'src/app/services/references.service';
   styleUrls: ['./reference-form.component.scss']
 })
 export class ReferenceFormComponent {
+
   ReferenceForm: FormGroup;
   errorMsg: any;
   selectedFile: any;
-
+  loading: boolean = false; // Flag variable
+  shortLink: string = "";
 
   constructor(
-    private _services: ReferencesService,
+    private _references: ReferencesService,
     private _fb: FormBuilder,
     private _dialogRef: DialogRef<ReferenceFormComponent>,
 //    private Activeroute: ActivatedRoute,
@@ -28,29 +30,49 @@ export class ReferenceFormComponent {
       file: this._fb.control(""),
     })
   }
-
+ 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
   OnSave() {
     if (this.ReferenceForm.valid) {
+      const formData = new FormData();
+      formData.append("title", this.ReferenceForm.value.title);
+      formData.append("description", this.ReferenceForm.value.description);
+      if (this.selectedFile) {
+        formData.append("image", this.selectedFile);
+      }
+      this.loading = true;
       if (this.data) {
-    /*    this._services.updateService(this.data.id, input).subscribe(({ data }) => {
-          console.log(data);
-          this._dialogRef.close();
-        //  this._services.getServices();
-        })*/
-        this._dialogRef.close();
+        /* this._gig.updateGig(this.data.id, input).subscribe(({ data }) => {
+           console.log(data);
+           this._dialogRef.close();
+           this._snackbar.openSnackBar('Gig updated successfully');
+           this._gig.getGigs();
+         })*/
       }
       else {
-        this._services.createReference(this.ReferenceForm.value).subscribe((response: any) => {
+        this._references.createReference(formData).subscribe((response: any) => {
           console.log(response);
+          console.log(response.imageUrl);
+          const savedData = {
+            title: this.ReferenceForm.value.title,
+            description: this.ReferenceForm.value.description,
+            imageUrl: response.imageUrl // Assuming the server returns imageUrl in the response
+          };
+          console.log(savedData); // This will include the imageUrl
+          console.log(savedData.imageUrl);
+          this.loading = false;
           this._dialogRef.close();
-        //  this._services.getServices();
-        })
+        },
+          (error: any) => {
+            console.log("upload image not working");
+            console.error(error);
+            this.loading = false;
+          }
+        );
       }
-      
     }
   }
 }

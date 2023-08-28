@@ -3,18 +3,19 @@ const Reference = require('../models/Reference');
 const fs = require('fs');  
 
 exports.createReference = (req, res, next) => {
-   const referenceObject = JSON.parse(req.body.reference); //transferer la chaine de characters(req.body.reference) en format json (referenceObject)
+   const referenceObject = req.body;
     delete referenceObject._id;
     delete referenceObject._userId;
     const reference = new Reference({
         ...referenceObject,
-        userId: req.auth.userId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        userId: req.body.userId,
+        imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`
     });
-
+console.log(req.file.filename);
     reference.save()
         .then(()=> {res.status(201).json({message: 'Reference enregistré'})})
         .catch(error=> {res.status(400).json({error})})
+        console.log(referenceObject);
 };
 
 
@@ -33,7 +34,7 @@ exports.getAllReferences = (req, res, next) => { //La première différence que 
 exports.modifyReference = (req, res, next) => {
     const referenceObject = req.file ? {   //on fait un test si l'objet contient image ou non
         ...JSON.parse(req.body.reference),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
     } : {...req.body};
 
     delete referenceObject._userId;  //never trust the user
