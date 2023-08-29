@@ -9,7 +9,7 @@ exports.createGalerie = (req, res, next) => {
     const galerie = new Galerie({
         ...galerieObject,
         userId: req.auth.userId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`
     });
 
     galerie.save()
@@ -33,7 +33,7 @@ exports.getAllGalerie = (req, res, next) => { //La première différence que vou
 exports.modifyGalerie = (req, res, next) => {
     const galerieObject = req.file ? {   //on fait un test si l'objet contient image ou non
         ...JSON.parse(req.body.galerie),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
     } : {...req.body};
 
     delete galerieObject._userId;  //never trust the user
@@ -57,8 +57,8 @@ exports.deleteGalerie = (req, res, next)=>{
             if (galerie.userId != req.auth.userId) {
                 res.status(401).json({message: 'Not authorized'});
             } else {
-                const filename = galerie.imageUrl.split('/images/')[1];
-                fs.unlink(`images/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier images lors supprision de l'objet
+                const filename = galerie.imageUrl.split('/image/')[1];
+                fs.unlink(`image/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier image lors supprision de l'objet
                     Galerie.deleteOne({_id: req.params.id})
                         .then(() => { res.status(200).json({message: 'Galerie supprimé !'})})
                         .catch(error => res.status(401).json({ error }));

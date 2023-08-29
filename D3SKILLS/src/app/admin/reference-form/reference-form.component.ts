@@ -2,6 +2,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ReferencesService } from 'src/app/services/references.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class ReferenceFormComponent {
     private _references: ReferencesService,
     private _fb: FormBuilder,
     private _dialogRef: DialogRef<ReferenceFormComponent>,
-//    private Activeroute: ActivatedRoute,
+    private _router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.ReferenceForm = this._fb.group({
@@ -65,6 +66,7 @@ export class ReferenceFormComponent {
           console.log(savedData.imageUrl);
           this.loading = false;
           this._dialogRef.close();
+          this._router.navigate(['/auth']);
         },
           (error: any) => {
             console.log("upload image not working");

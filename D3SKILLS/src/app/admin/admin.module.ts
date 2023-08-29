@@ -9,12 +9,13 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableModule, MatTableDataSource} from '@angular/material/table';
 import { ServiceFormComponent } from './service-form/service-form.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { WebReqInterceptor } from '../services/web-req.interceptor';
 import { ReferenceFormComponent } from './reference-form/reference-form.component';
 import { GalerieFormComponent } from './galerie-form/galerie-form.component';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { GalerieFormComponent } from './galerie-form/galerie-form.component';
     MatIconModule,
     ReactiveFormsModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true}

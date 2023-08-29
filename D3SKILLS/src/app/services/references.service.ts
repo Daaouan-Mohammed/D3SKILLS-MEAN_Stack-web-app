@@ -18,4 +18,8 @@ export class ReferencesService {
     return this._webReqService.get('api/references')  ;
   }
 
+  deleteReference(id: string){
+    return this._webReqService.delete(`api/references/${id}`)
+  }
+
 }

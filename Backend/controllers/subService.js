@@ -10,7 +10,7 @@ exports.createSubService = (req, res, next) => {
         ...subServiceObject,
         userId: req.auth.userId,
       //  _serviceId: req.params.serviceId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`
     });
 
     subService.save()
@@ -36,7 +36,7 @@ exports.getAllSubServices = (req, res, next) => { //La première différence que
 exports.modifySubService = (req, res, next) => {
     const subServiceObject = req.file ? {   //on fait un test si l'objet contient image ou non
         ...JSON.parse(req.body.subService),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
     } : {...req.body};
 
     delete subServiceObject._userId;  //never trust the user
@@ -64,8 +64,8 @@ exports.deleteSubService = (req, res, next)=>{
             if (subService.userId != req.auth.userId) {
                 res.status(401).json({message: 'Not authorized'});
             } else {
-                const filename = subService.imageUrl.split('/images/')[1];
-                fs.unlink(`images/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier images lors supprision de l'objet
+                const filename = subService.imageUrl.split('/image/')[1];
+                fs.unlink(`image/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier image lors supprision de l'objet
                     SubService.deleteOne({
                         _id: req.params.id,
                         _serviceId: req.params.serviceId})

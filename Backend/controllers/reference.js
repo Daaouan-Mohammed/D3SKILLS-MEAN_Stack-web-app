@@ -55,11 +55,11 @@ exports.modifyReference = (req, res, next) => {
 exports.deleteReference = (req, res, next)=>{
         Reference.findOne({ _id: req.params.id})
         .then(reference => {
-            if (reference.userId != req.auth.userId) {
+            if (reference.userId != req.body.userId) {
                 res.status(401).json({message: 'Not authorized'});
             } else {
-                const filename = reference.imageUrl.split('/images/')[1];
-                fs.unlink(`images/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier images lors supprision de l'objet
+                const filename = reference.imageUrl.split('/image/')[1];
+                fs.unlink(`image/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier images lors supprision de l'objet
                     Reference.deleteOne({_id: req.params.id})
                         .then(() => { res.status(200).json({message: 'Reference supprimé !'})})
                         .catch(error => res.status(401).json({ error }));

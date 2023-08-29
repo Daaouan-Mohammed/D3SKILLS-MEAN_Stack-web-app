@@ -59,7 +59,7 @@ exports.deleteService = (req, res, next)=>{
                 res.status(401).json({message: 'Not authorized'});
             } else {
                 const filename = service.imageUrl.split('/image/')[1];
-                fs.unlink(`image/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier images lors supprision de l'objet
+                fs.unlink(`image/${filename}`, () => { //supprimer l'image de l'objet exist dans le dossier image lors supprision de l'objet
                     Service.deleteOne({_id: req.params.id})
                         .then(() => { res.status(200).json({message: 'Service supprimé !'})})
                         .catch(error => res.status(401).json({ error }));
