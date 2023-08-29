@@ -9,6 +9,7 @@ import { ReferenceFormComponent } from '../reference-form/reference-form.compone
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { ReferencesService } from 'src/app/services/references.service';
+import { GalerieService } from 'src/app/services/galerie.service';
 
 
 @Component({
@@ -17,7 +18,12 @@ import { ReferencesService } from 'src/app/services/references.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements AfterViewInit{
-  constructor(public dialog: MatDialog, public _login: LoginService, private _router: Router, private _references: ReferencesService) {}
+  constructor(
+    public dialog: MatDialog, 
+    public _login: LoginService, 
+    private _router: Router, 
+    private _references: ReferencesService,
+    private _galerie: GalerieService) {}
   
   openServiceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ServiceFormComponent, {
@@ -67,15 +73,22 @@ export class DashboardComponent implements AfterViewInit{
     this.status = !this.status;
   }
 
-  //references table:
+  //references, galerie table:
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   references : any;
+  galerie : any;
 
   ngOnInit(){
     this._references.getReferences().subscribe((references: any) =>{
     this.references = references;
     console.log(references);
   })
+  
+    this._galerie.getGalerie().subscribe((galerie: any) =>{
+    this.galerie = galerie;
+    console.log(galerie);
+  })
+
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -92,6 +105,17 @@ export class DashboardComponent implements AfterViewInit{
       console.log('Reference deleted successfully');
     }, error => {
       console.error('Error deleting reference:', error);
+    });
+  }
+
+  //delete galerie:
+  onDeletegalerie(galerieId: string){
+    this._galerie.deleteGalerie(galerieId)
+    .subscribe(() => {
+      this._router.navigate(['/auth']);
+      console.log('Galerie deleted successfully');
+    }, error => {
+      console.error('Error deleting galerie:', error);
     });
   }
 

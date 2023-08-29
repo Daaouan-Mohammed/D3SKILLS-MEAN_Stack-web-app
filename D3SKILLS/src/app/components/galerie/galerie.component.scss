@@ -1,31 +1,99 @@
 .blog-posts {
-    height: 800px;
-    width: 650px;
-    padding: 20px; /* Add padding for spacing */
-  
-    /* Add a border with rounded corners */
+  height: 800px;
+  width: 650px;
+  padding: 20px;
+  /* Add padding for spacing */
+
+  /* Add a border with rounded corners */
+  border-radius: 8px;
+
+  /* Apply vertical scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* Customize scrollbar width */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #555;
+    /* Scrollbar thumb color */
     border-radius: 8px;
-  
-    /* Apply vertical scrolling */
-    overflow-y: auto;
-    overflow-x: hidden;
-  
-    &::-webkit-scrollbar {
-      width: 8px; /* Customize scrollbar width */
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background: #555; /* Scrollbar thumb color */
-      border-radius: 8px;
-  
-      &:hover {
-        background: #333; /* Scrollbar thumb color on hover */
-      }
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: #f1f1f1; /* Scrollbar track color */
-      border-radius: 8px;
+
+    &:hover {
+      background: #333;
+      /* Scrollbar thumb color on hover */
     }
   }
-  
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Scrollbar track color */
+    border-radius: 8px;
+  }
+}
+
+/////
+
+.col-lg-6 {
+  &.wow {
+    &.fadeInUp {
+      // Apply styles for the col-lg-6 element with wow and fadeInUp classes
+      animation: fadeInUp 1s 0.3s both;
+    }
+  }
+
+  .blog-posts {
+    .row {
+      .col-lg-12 {
+        .post-item {
+          display: flex;
+          margin-bottom: 20px;
+
+          .thumb {
+            width: 60%;
+            margin-right: 20px;
+
+            img {
+              width: 320px;
+              height: 300px;
+            }
+          }
+
+          .right-content {
+            width: 40%;
+              h6 {
+                margin: 10px 0;
+              }
+            }           
+          }
+        }
+      }
+    }
+  }
+
+// Media Query for Responsive Design
+@media (max-width: 991px) {
+  .col-lg-6 {
+    .blog-posts {
+      .row {
+        .col-lg-12 {
+          .post-item {
+            flex-direction: column;
+
+            .thumb {
+              width: 100%;
+              margin-right: 0;
+              margin-bottom: 10px;
+            }
+
+            .right-content {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

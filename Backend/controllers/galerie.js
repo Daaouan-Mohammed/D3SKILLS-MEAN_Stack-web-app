@@ -3,18 +3,19 @@ const Galerie = require('../models/Galerie');
 const fs = require('fs');  
 
 exports.createGalerie = (req, res, next) => {
-   const galerieObject = JSON.parse(req.body.galerie); //transferer la chaine de characters(req.body.galerie) en format json (galerieObject)
+   const galerieObject = req.body;
     delete galerieObject._id;
     delete galerieObject._userId;
     const galerie = new Galerie({
         ...galerieObject,
-        userId: req.auth.userId,
+        userId: req.body.userId,
         imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`
     });
-
+console.log(req.file.filename);
     galerie.save()
         .then(()=> {res.status(201).json({message: 'Galerie enregistré'})})
         .catch(error=> {res.status(400).json({error})})
+        console.log(galerieObject);
 };
 
 
@@ -54,7 +55,7 @@ exports.modifyGalerie = (req, res, next) => {
 exports.deleteGalerie = (req, res, next)=>{
         Galerie.findOne({ _id: req.params.id})
         .then(galerie => {
-            if (galerie.userId != req.auth.userId) {
+            if (galerie.userId != req.body.userId) {
                 res.status(401).json({message: 'Not authorized'});
             } else {
                 const filename = galerie.imageUrl.split('/image/')[1];
