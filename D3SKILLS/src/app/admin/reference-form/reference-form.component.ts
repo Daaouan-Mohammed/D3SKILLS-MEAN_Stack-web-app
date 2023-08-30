@@ -1,5 +1,5 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -10,13 +10,14 @@ import { ReferencesService } from 'src/app/services/references.service';
   templateUrl: './reference-form.component.html',
   styleUrls: ['./reference-form.component.scss']
 })
-export class ReferenceFormComponent {
+export class ReferenceFormComponent implements OnInit{
 
   ReferenceForm: FormGroup;
   errorMsg: any;
   selectedFile: any;
   loading: boolean = false; // Flag variable
   shortLink: string = "";
+  references: any;
 
   constructor(
     private _references: ReferencesService,
@@ -30,6 +31,10 @@ export class ReferenceFormComponent {
       description: this._fb.control(""),
       file: this._fb.control(""),
     })
+  }
+
+  ngOnInit(): void {
+      this.ReferenceForm.patchValue(this.data);
   }
  
   onFileSelected(event: any) {
@@ -45,13 +50,11 @@ export class ReferenceFormComponent {
         formData.append("image", this.selectedFile);
       }
       this.loading = true;
+
       if (this.data) {
-        /* this._gig.updateGig(this.data.id, input).subscribe(({ data }) => {
-           console.log(data);
-           this._dialogRef.close();
-           this._snackbar.openSnackBar('Gig updated successfully');
-           this._gig.getGigs();
-         })*/
+         this._references.editReference(this.data._id, formData).subscribe(() =>{
+          this._router.navigate(['/auth']);
+         })
       }
       else {
         this._references.createReference(formData).subscribe((response: any) => {

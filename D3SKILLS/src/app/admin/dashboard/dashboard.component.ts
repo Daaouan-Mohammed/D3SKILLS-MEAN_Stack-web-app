@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChild} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, AfterViewInit, ViewChild, Inject, OnInit} from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { ServiceFormComponent } from '../service-form/service-form.component';
 import { LoginService } from 'src/app/services/login.service';
@@ -23,7 +23,8 @@ export class DashboardComponent implements AfterViewInit{
     public _login: LoginService, 
     private _router: Router, 
     private _references: ReferencesService,
-    private _galerie: GalerieService) {}
+    private _galerie: GalerieService,
+    ) {}
   
   openServiceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ServiceFormComponent, {
@@ -58,8 +59,18 @@ export class DashboardComponent implements AfterViewInit{
       height: '91.8%',
       enterAnimationDuration,
       exitAnimationDuration,
-      disableClose: false
+      disableClose: false,
     });
+  }
+  editRefDialoge(data: any, enterAnimationDuration: string, exitAnimationDuration: string){
+    this.dialog.open(ReferenceFormComponent, {
+      width: '59.5%',
+      height: '91.8%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      disableClose: false,
+      data: data,
+    }); 
   }
 
   logout() {
@@ -75,26 +86,30 @@ export class DashboardComponent implements AfterViewInit{
 
   //references, galerie table:
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
-  references : any;
-  galerie : any;
+  references!: MatTableDataSource<any>;
+  galerie !: MatTableDataSource<any>;
 
-  ngOnInit(){
+  ngOnInit(){ //display tables
     this._references.getReferences().subscribe((references: any) =>{
-    this.references = references;
+    this.references =new MatTableDataSource(references);
+    this.references.paginator = this.paginator;
     console.log(references);
   })
   
     this._galerie.getGalerie().subscribe((galerie: any) =>{
-    this.galerie = galerie;
+    this.galerie =new MatTableDataSource(galerie);
+    this.galerie.paginator = this.paginator;
     console.log(galerie);
   })
 
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
-    this.references.paginator = this.paginator;
+    if (this.references) {
+      this.references.paginator = this.paginator;
+    }
   }
 
   //delete ref:

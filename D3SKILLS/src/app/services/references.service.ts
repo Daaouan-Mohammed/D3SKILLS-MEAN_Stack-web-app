@@ -18,6 +18,10 @@ export class ReferencesService {
     return this._webReqService.get('api/references')  ;
   }
 
+  editReference(id: string, formData: FormData){
+    return this._webReqService.put(`api/references/${id}`, formData)  ;
+  }
+
   deleteReference(id: string){
     return this._webReqService.delete(`api/references/${id}`)
   }

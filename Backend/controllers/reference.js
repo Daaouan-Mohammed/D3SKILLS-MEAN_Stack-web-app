@@ -33,14 +33,14 @@ exports.getAllReferences = (req, res, next) => { //La première différence que 
 
 exports.modifyReference = (req, res, next) => {
     const referenceObject = req.file ? {   //on fait un test si l'objet contient image ou non
-        ...JSON.parse(req.body.reference),
+        ...req.body,
         imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
     } : {...req.body};
 
     delete referenceObject._userId;  //never trust the user
     Reference.findOne({_id: req.params.id})
         .then((reference)=>{
-            if(reference.userId != req.auth.userId){   //tester si userId de la requete est le meme de l'objet
+            if(reference.userId != req.body.userId){   //tester si userId de la requete est le meme de l'objet
                 res.status(401).json({ message : 'Not authorized'});
             }
             else{  
