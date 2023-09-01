@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module'; 
 import { DashboardComponent } from './dashboard/dashboard.component'; 
-import { NbLayoutModule } from '@nebular/theme';
+import { NbAlertModule, NbLayoutModule } from '@nebular/theme';
 import { AuthComponent } from './auth/auth.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -37,6 +37,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     HttpClientModule,
     MatPaginatorModule,
+    NbAlertModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true}

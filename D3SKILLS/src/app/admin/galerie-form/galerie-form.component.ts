@@ -15,6 +15,7 @@ export class GalerieFormComponent {
   errorMsg: any;
   selectedFile: any;
   loading: boolean = false; // Flag variable
+  galerie: any;
 
   constructor(
     private _galerie: GalerieService,
@@ -29,6 +30,10 @@ export class GalerieFormComponent {
       videoUrl: this._fb.control(""),
       file: this._fb.control(""),
     })
+  }
+
+  ngOnInit(): void {
+      this.GalerieForm.patchValue(this.data);
   }
 
   onFileSelected(event: any) {
@@ -46,12 +51,9 @@ export class GalerieFormComponent {
       }
       this.loading = true;
       if (this.data) {
-        /* this._gig.updateGig(this.data.id, input).subscribe(({ data }) => {
-           console.log(data);
-           this._dialogRef.close();
-           this._snackbar.openSnackBar('Gig updated successfully');
-           this._gig.getGigs();
-         })*/
+        this._galerie.editGalerie(this.data._id, formData).subscribe(() =>{
+          this._router.navigate(['/auth']);
+         })
       }
       else {
         this._galerie.createGalerie(formData).subscribe((response: any) => {

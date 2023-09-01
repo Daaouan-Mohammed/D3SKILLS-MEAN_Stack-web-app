@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, Inject, OnInit} from '@angular/core';
+import { Component, AfterViewInit, ViewChild, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { ServiceFormComponent } from '../service-form/service-form.component';
@@ -10,12 +10,14 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { ReferencesService } from 'src/app/services/references.service';
 import { GalerieService } from 'src/app/services/galerie.service';
+import { DemandeDevisService } from 'src/app/services/demande-devis.service';
 
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements AfterViewInit{
   constructor(
@@ -24,7 +26,9 @@ export class DashboardComponent implements AfterViewInit{
     private _router: Router, 
     private _references: ReferencesService,
     private _galerie: GalerieService,
+    private _demandeDevis: DemandeDevisService,
     ) {}
+    
   
   openServiceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ServiceFormComponent, {
@@ -35,6 +39,17 @@ export class DashboardComponent implements AfterViewInit{
       disableClose: false
     });
   }
+  editServiceDialoge(data: any, enterAnimationDuration: string, exitAnimationDuration: string){
+    this.dialog.open(ServiceFormComponent, {
+      width: '59.5%',
+      height: '91.8%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      disableClose: false,
+      data: data,
+    }); 
+  }
+
   openSubServiceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(LoginFormComponent, {
       width: '59.5%',
@@ -44,6 +59,7 @@ export class DashboardComponent implements AfterViewInit{
       disableClose: false
     });
   }
+
   openGalerieDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(GalerieFormComponent, {
       width: '59.5%',
@@ -53,6 +69,17 @@ export class DashboardComponent implements AfterViewInit{
       disableClose: false
     });
   }
+  editGalerieDialoge(data: any, enterAnimationDuration: string, exitAnimationDuration: string){
+    this.dialog.open(GalerieFormComponent, {
+      width: '59.5%',
+      height: '91.8%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      disableClose: false,
+      data: data,
+    }); 
+  }
+
   openReferenceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ReferenceFormComponent, {
       width: '59.5%',
@@ -88,6 +115,7 @@ export class DashboardComponent implements AfterViewInit{
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   references!: MatTableDataSource<any>;
   galerie !: MatTableDataSource<any>;
+  demandeDevis!: any[];
 
   ngOnInit(){ //display tables
     this._references.getReferences().subscribe((references: any) =>{
@@ -100,6 +128,11 @@ export class DashboardComponent implements AfterViewInit{
     this.galerie =new MatTableDataSource(galerie);
     this.galerie.paginator = this.paginator;
     console.log(galerie);
+  })
+
+    this._demandeDevis.getDemandeDevis().subscribe((demandeDevis: any) =>{
+    this.demandeDevis = demandeDevis;
+    console.log(demandeDevis);
   })
 
   }
@@ -131,6 +164,16 @@ export class DashboardComponent implements AfterViewInit{
       console.log('Galerie deleted successfully');
     }, error => {
       console.error('Error deleting galerie:', error);
+    });
+  }
+
+  onDeleteDevis(demandeDevisId: string){
+    this._demandeDevis.deleteDemandeDevis(demandeDevisId)
+    .subscribe(() => {
+      this._router.navigate(['/auth']);
+      console.log('demande devis deleted successfully');
+    }, error => {
+      console.error('Error deleting demande devis:', error);
     });
   }
 

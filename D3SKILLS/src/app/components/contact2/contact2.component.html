@@ -3,24 +3,23 @@
       <div class="row">
         <div class="col-lg-4 offset-lg-4">
           <div class="section-heading  wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-            <h6>Obtenir un devis gratuit</h6>
+            <h6>Obtenir un devis</h6>
             <h5 style="color: white;">Grandissez Avec Nous Maintenant</h5>
             <div class="line-dec"></div>
           </div>
         </div>
         <div class="col-lg-8 offset-lg-2  wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-          <form id="search" action="#" method="GET">
+
+          <form id="search" [formGroup]="DemandeDevisForm" (ngSubmit)="OnFormSend()">
             <div class="row">
               <div class="col-lg-4 col-sm-4">
                 <fieldset>
-                  <input type="web" name="web" class="website" placeholder="Votre service préféré..." autocomplete="on"
-                    required>
+                  <input #subjectInput id="form2Example11" class="website" type="text" placeholder="Votre service préféré..." formControlName="subject" required>
                 </fieldset>
               </div>
               <div class="col-lg-4 col-sm-4">
                 <fieldset>
-                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on"
-                    required>
+                  <input #emailInput id="form2Example11" class="email" type="email" placeholder="Email Address..." formControlName="email" required>
                 </fieldset>
               </div>
               <div class="col-lg-4 col-sm-4">
@@ -30,6 +29,7 @@
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>

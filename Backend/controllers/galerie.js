@@ -33,14 +33,14 @@ exports.getAllGalerie = (req, res, next) => { //La première différence que vou
 
 exports.modifyGalerie = (req, res, next) => {
     const galerieObject = req.file ? {   //on fait un test si l'objet contient image ou non
-        ...JSON.parse(req.body.galerie),
+        ...req.body,
         imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
     } : {...req.body};
 
     delete galerieObject._userId;  //never trust the user
     Galerie.findOne({_id: req.params.id})
         .then((galerie)=>{
-            if(galerie.userId != req.auth.userId){   //tester si userId de la requete est le meme de l'objet
+            if(galerie.userId != req.body.userId){   //tester si userId de la requete est le meme de l'objet
                 res.status(401).json({ message : 'Not authorized'});
             }
             else{  

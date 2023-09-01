@@ -108,7 +108,25 @@
       </li>
     </ul>
 
-          <!--references table-->
+    <!--notifications-->
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Notifications:</h3>
+          <i class='bx bx-filter'></i>
+        </div>
+        <div class="mat-elevation-z8">
+          <nb-alert status="success" closable (close)="onDeleteDevis(demandeDevis._id)" *ngFor="let demandeDevis of demandeDevis">
+            {{demandeDevis.email}} <small style="color: rgba(245, 245, 245, 0.721);">vous a envoyé une demande de devis:</small> {{demandeDevis.subject}}
+          </nb-alert>
+
+          
+        </div>
+      </div>
+    </div>
+
+
+    <!--references table-->
     <div class="table-data">
       <div class="order">
         <div class="head">
@@ -117,103 +135,109 @@
         </div>
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="references">
-        
+
             <!-- Position Column -->
             <ng-container matColumnDef="position">
               <th mat-header-cell *matHeaderCellDef> Id. </th>
               <td mat-cell *matCellDef="let ref of references"> {{ref._id}} </td>
             </ng-container>
-        
+
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
               <td mat-cell *matCellDef="let ref of references"> {{ref.title}} </td>
             </ng-container>
-        
+
             <!-- Weight Column -->
             <ng-container matColumnDef="weight">
               <th mat-header-cell *matHeaderCellDef> Descriprion </th>
               <td mat-cell *matCellDef="let ref of references"> {{ref.description}} </td>
             </ng-container>
-        
+
             <!-- Symbol Column -->
             <ng-container matColumnDef="symbol">
               <th mat-header-cell *matHeaderCellDef> Logo </th>
               <td mat-cell *matCellDef="let ref of references"><img src="{{ref.imageUrl}}" alt=""></td>
             </ng-container>
-        
+
             <!-- Action Column -->
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef> Action </th>
-              <td mat-cell *matCellDef="let ref of references" style="display: flex; justify-content: space-between;"> 
-                  <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" (click)="editRefDialoge(ref, '1000ms', '500ms')"><i class="fa fa-edit"></i></button>
-                  <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" (click)="onDeleteRef(ref._id)"><i class="fa fa-trash"></i></button>
+              <td mat-cell *matCellDef="let ref of references" style="display: flex; justify-content: space-between;">
+                <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
+                  data-placement="top" title="Edit" (click)="editRefDialoge(ref, '1000ms', '500ms')"><i
+                    class="fa fa-edit"></i></button>
+                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+                  title="Delete" (click)="onDeleteRef(ref._id)"><i class="fa fa-trash"></i></button>
               </td>
             </ng-container>
-        
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          
+
           <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
           </mat-paginator>
         </div>
       </div>
     </div>
 
-        <!--galerie table-->
-        <div class="table-data">
-          <div class="order">
-            <div class="head">
-              <h3>Galerie:</h3>
-              <i class='bx bx-filter'></i>
-            </div>
-            <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="galerie">
-            
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                  <th mat-header-cell *matHeaderCellDef> Name </th>
-                  <td mat-cell *matCellDef="let galerie of galerie"> {{galerie.title}} </td>
-                </ng-container>
-            
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef> Descriprion </th>
-                  <td mat-cell *matCellDef="let galerie of galerie"> {{galerie.description}} </td>
-                </ng-container>
-            
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                  <th mat-header-cell *matHeaderCellDef> Video link </th>
-                  <td mat-cell *matCellDef="let galerie of galerie"> {{galerie.videoUrl}} </td>
-                </ng-container>
-            
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                  <th mat-header-cell *matHeaderCellDef> Logo </th>
-                  <td mat-cell *matCellDef="let galerie of galerie"><img src="{{galerie.imageUrl}}" alt=""></td>
-                </ng-container>
-            
-                <!-- Action Column -->
-                <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef> Action </th>
-                  <td mat-cell *matCellDef="let galerie of galerie" style="display: flex; justify-content: space-between;"> 
-                      <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" (click)="openGalerieDialog('1000ms', '500ms')"><i class="fa fa-edit"></i></button>
-                      <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" (click)="onDeletegalerie(galerie._id)"><i class="fa fa-trash"></i></button>
-                  </td>
-                </ng-container>
-            
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-
-              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
-              </mat-paginator>
-            
-            </div>
-          </div>
+    <!--galerie table-->
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Galerie:</h3>
+          <i class='bx bx-filter'></i>
         </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="galerie">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let galerie of galerie"> {{galerie.title}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Descriprion </th>
+              <td mat-cell *matCellDef="let galerie of galerie"> {{galerie.description}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Video link </th>
+              <td mat-cell *matCellDef="let galerie of galerie"> {{galerie.videoUrl}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Logo </th>
+              <td mat-cell *matCellDef="let galerie of galerie"><img src="{{galerie.imageUrl}}" alt=""></td>
+            </ng-container>
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let galerie of galerie" style="display: flex; justify-content: space-between;">
+                <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
+                  data-placement="top" title="Edit" (click)="editGalerieDialoge(galerie, '1000ms', '500ms')"><i
+                    class="fa fa-edit"></i></button>
+                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+                  title="Delete" (click)="onDeletegalerie(galerie._id)"><i class="fa fa-trash"></i></button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+          </mat-paginator>
+
+        </div>
+      </div>
+    </div>
 
   </main>
   <!-- MAIN -->
@@ -222,6 +246,6 @@
 
 <nb-layout>
   <nb-layout-column>
-    <img src="../assets/images/transparent-logo small.png" alt="">
+    <img src="../assets/images/transparent-logo small.png" alt="" style="height: 80%; width: 80%; padding-left: 200px;">
   </nb-layout-column>
 </nb-layout>

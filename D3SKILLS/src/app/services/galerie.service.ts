@@ -17,7 +17,12 @@ export class GalerieService {
     return this._webReqService.get('api/galerie')  ;
   }
 
+  editGalerie(id: string, formData: FormData){
+    return this._webReqService.put(`api/galerie/${id}`, formData)  ;
+  }
+
   deleteGalerie(id: string){
     return this._webReqService.delete(`api/galerie/${id}`)
   }
+
 }

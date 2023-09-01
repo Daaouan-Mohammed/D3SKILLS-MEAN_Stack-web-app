@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AProposComponent } from './components/a-propos/a-propos.component';
 import { ServicesComponent } from './components/services/services.component';
@@ -49,6 +50,7 @@ import { WebReqInterceptor } from './services/web-req.interceptor';
     NbLayoutModule,
     MatDialogModule,
     HttpClientModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

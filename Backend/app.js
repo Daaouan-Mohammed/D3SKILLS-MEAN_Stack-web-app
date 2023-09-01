@@ -10,6 +10,7 @@ const serviceRoutes = require('./routes/service');
 const subServiceRoutes = require('./routes/subService');
 const referenceRoutes = require('./routes/reference');
 const galerieRoutes = require('./routes/galerie');
+const demandeDevisRoutes = require('./routes/demandeDevis');
 const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb+srv://mohammed:AbCd2016@cluster0.rpygsuh.mongodb.net/?retryWrites=true&w=majority',
@@ -38,6 +39,7 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/services/:id/subServices', subServiceRoutes);
 app.use('/api/references', referenceRoutes);
 app.use('/api/galerie', galerieRoutes);
+app.use('/api/demandeDevis', demandeDevisRoutes);
 app.use('/image', express.static(path.join(__dirname, 'image')));//__dirname = directory name
 
 module.exports = app;
