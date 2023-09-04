@@ -39,6 +39,7 @@ export class Contact2Component {
             subject: this.DemandeDevisForm.value.subject,
             email: this.DemandeDevisForm.value.email,
           };
+          this.DemandeDevisForm.reset();
           console.log(savedData);
           this._router.navigate(['']);
         },

@@ -9,7 +9,7 @@ exports.createDemandeDevis = (req, res, next) => {
         userId: req.body.userId,
     });
     demandeDevis.save()
-        .then(() => { res.status(201).json({ message: 'demandeDevis enregistré' }) })
+        .then(() => { res.status(201).json({ message: 'demandeDevis/contact enregistré' }) })
         .catch(error => { res.status(400).json({ error }) })
     console.log(demandeDevisObject);
 };
@@ -27,7 +27,7 @@ exports.deleteDemandeDevis = (req, res, next) => {
                 res.status(401).json({ message: 'Not authorized' });
             } else {
                 DemandeDevis.deleteOne({ _id: req.params.id })
-                    .then(() => { res.status(200).json({ message: 'DemandeDevis supprimé !' }) })
+                    .then(() => { res.status(200).json({ message: 'DemandeDevis/contact supprimé !' }) })
                     .catch(error => res.status(401).json({ error }));
             }
         })

@@ -16,6 +16,7 @@ import { WebReqInterceptor } from '../services/web-req.interceptor';
 import { ReferenceFormComponent } from './reference-form/reference-form.component';
 import { GalerieFormComponent } from './galerie-form/galerie-form.component';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     HttpClientModule,
     MatPaginatorModule,
-    NbAlertModule
+    NbAlertModule,
+    MatListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true}

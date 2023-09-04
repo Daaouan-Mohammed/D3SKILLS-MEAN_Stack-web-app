@@ -51,7 +51,7 @@ exports.modifyReference = (req, res, next) => {
         })
         .catch(error=> {res.status(400).json({error})});
 };
-
+ 
 exports.deleteReference = (req, res, next)=>{
         Reference.findOne({ _id: req.params.id})
         .then(reference => {

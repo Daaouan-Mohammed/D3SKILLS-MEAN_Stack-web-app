@@ -36,7 +36,7 @@ app.use((req, res, next) => {  //plus que c'est le 1er middleware executé donc 
 
 app.use('/api/auth', userRoutes);
 app.use('/api/services', serviceRoutes);
-app.use('/api/services/:id/subServices', subServiceRoutes);
+app.use('/api/services/:serviceId/subServices', subServiceRoutes);
 app.use('/api/references', referenceRoutes);
 app.use('/api/galerie', galerieRoutes);
 app.use('/api/demandeDevis', demandeDevisRoutes);

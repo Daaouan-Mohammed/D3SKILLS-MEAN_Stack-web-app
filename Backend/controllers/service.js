@@ -33,14 +33,14 @@ exports.getAllServices = (req, res, next) => { //La première différence que vo
 
 exports.modifyService = (req, res, next) => {
     const serviceObject = req.file ? {   //on fait un test si l'objet contient image ou non
-        ...JSON.parse(req.body.service),
+        ...req.body,
         imageUrl: `${req.protocol}://${req.get('host')}/image/${req.file.filename}`,
     } : {...req.body};
 
     delete serviceObject._userId;  //never trust the user
     Service.findOne({_id: req.params.id})
         .then((service)=>{
-            if(service.userId != req.auth.userId){   //tester si userId de la requete est le meme de l'objet
+            if(service.userId != req.body.userId){   //tester si userId de la requete est le meme de l'objet
                 res.status(401).json({ message : 'Not authorized'});
             }
             else{  
@@ -55,7 +55,7 @@ exports.modifyService = (req, res, next) => {
 exports.deleteService = (req, res, next)=>{
         Service.findOne({ _id: req.params.id})
         .then(service => {
-            if (service.userId != req.auth.userId) {
+            if (service.userId != req.body.userId) {
                 res.status(401).json({message: 'Not authorized'});
             } else {
                 const filename = service.imageUrl.split('/image/')[1];

@@ -1,14 +1,14 @@
-<div class="card rounded-3 text-black">
-    <div class="row g-0">
-        <div class="col-lg-6">
-            <div class="card-body p-md-5 mx-md-4" style="height: 655px;">
-                <div class="text-center">
-                    <img src="../../../assets/images/transparent-logo small.png" style="width: 150px;" alt="logo">
-                    <h4 class="mt-1 mb-5 pb-1">Administrative Team</h4>
-                    <h6><b>{{data ? 'Update': 'Add new'}} service</b></h6>
-                </div>
+<form [formGroup]="ServiceForm" (ngSubmit)="OnSave()" class="form">
+    <div class="card rounded-3 text-black">
+        <div class="row g-0">
+            <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4" style="height: 655px;">
+                    <div class="text-center">
+                        <img src="../../../assets/images/transparent-logo small.png" style="width: 150px;" alt="logo">
+                        <h4 class="mt-1 mb-5 pb-1">Administrative Team</h4>
+                        <h6><b>{{data ? 'Update': 'Add new'}} service</b></h6>
+                    </div>
 
-                <form [formGroup]="ServiceForm" (ngSubmit)="OnSave()" class="form">
                     <div *ngIf="errorMsg" class="error-message">{{errorMsg}}</div>
                     <div class="form-outline mb-4">
                         <input id="form2Example11" class="form-control" type="text" placeholder="Title"
@@ -32,19 +32,43 @@
                             <i class="fa fa-paper-plane"></i> {{data ? 'Update': 'Add'}}
                         </button>
                     </div>
-
-                </form>
-
+                </div>
             </div>
-        </div>
 
-        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <img src="../../../assets/images/transparent-logo small.png" style="width: 300px;" alt="logo">
-                <br>
-                <h4 class="mb-4">FORMATION / CONSEIL / ACCOMPAGNEMENT</h4>
-                <p class="small mb-0">‘’ Là où les projets prennent vie ‘’</p>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                    <div class="form-outline mb-4">
+                        <input id="form2Example11" class="form-control" type="text" placeholder="subService1"
+                            formControlName="subService1">
+                        <label class="form-label" for="subService1">subService1</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input id="form2Example11" class="form-control" type="text" placeholder="subService2"
+                            formControlName="subService2">
+                        <label class="form-label" for="subService2">subService2</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input id="form2Example11" class="form-control" type="text" placeholder="subService3"
+                            formControlName="subService3">
+                        <label class="form-label" for="subService3">subService3</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input id="form2Example11" class="form-control" type="text" placeholder="subService4"
+                            formControlName="subService4">
+                        <label class="form-label" for="subService4">subService4</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input id="form2Example11" class="form-control" type="text" placeholder="subService5"
+                            formControlName="subService5">
+                        <label class="form-label" for="subService5">subService5</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input id="form2Example11" class="form-control" type="text" placeholder="subService6"
+                            formControlName="subService6">
+                        <label class="form-label" for="subService6">subService6</label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
