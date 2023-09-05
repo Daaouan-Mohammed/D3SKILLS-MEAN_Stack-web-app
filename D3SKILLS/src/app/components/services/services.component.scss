@@ -1,0 +1,29 @@
+.col-lg-12 {
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .thumb {
+            flex-basis: calc(33.33% - 30px); // Adjust the width as needed
+            margin: 10px;
+            text-align: center;
+
+        }
+
+        // Media query for smaller screens (e.g., mobile devices)
+        @media (max-width: 768px) {
+            display: grid;
+            gap: 0.2rem;
+            grid-auto-flow: column;
+            grid-auto-columns: 45%;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 1rem;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+        }
+    }
+}

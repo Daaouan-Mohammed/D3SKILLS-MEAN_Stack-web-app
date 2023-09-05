@@ -1,8 +1,13 @@
 .fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000; /* Make sure it appears above other content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .header-area {
+    display: none; // Hide the header on phones or other small screens
   }
-  
+}

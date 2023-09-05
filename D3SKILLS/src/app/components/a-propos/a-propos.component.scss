@@ -1,3 +1,16 @@
+.cluster{
+  display: grid;
+  gap: 0.2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 45%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
 .progress-section {
     display: flex;
     justify-content: space-around;

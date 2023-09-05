@@ -5,8 +5,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { GalerieFormComponent } from '../galerie-form/galerie-form.component';
 import { ReferenceFormComponent } from '../reference-form/reference-form.component';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 import { ReferencesService } from 'src/app/services/references.service';
 import { GalerieService } from 'src/app/services/galerie.service';
 import { DemandeDevisService } from 'src/app/services/demande-devis.service';
@@ -136,7 +136,7 @@ export class DashboardComponent implements AfterViewInit{
   
     this._galerie.getGalerie().subscribe((galerie: any) =>{
     this.galerie =new MatTableDataSource(galerie);
-    this.galerie.paginator = this.paginator;
+    this.galerie.paginator = this.galeriePaginator;
     console.log(galerie);
   })
 
@@ -161,10 +161,14 @@ export class DashboardComponent implements AfterViewInit{
   }*/
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild('galeriePaginator') galeriePaginator!: MatPaginator;
 
   ngAfterViewInit() {
     if (this.references) {
       this.references.paginator = this.paginator;
+    }
+    if (this.galerie) {
+      this.galerie.paginator = this.galeriePaginator;
     }
   }
 

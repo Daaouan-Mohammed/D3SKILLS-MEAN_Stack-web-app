@@ -62,12 +62,12 @@
       <a class="nav-link">Administration</a>
     </nav>
     <nav>
-      <a class="notification">
+     <!--<a class="notification">
         <i class='bx bxs-bell'></i>
         <span class="num">8</span>
-      </a>
-      <a href="#" class="profile">
-        <img src="../../../assets/images/1.png">
+      </a>--> 
+      <a class="profile">
+        <img src="../../../assets/images/transparent-logo small.png">
       </a>
     </nav>
   </nav>
@@ -300,7 +300,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
 
-              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+              <mat-paginator #galeriePaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
               </mat-paginator>
 
             </div>
