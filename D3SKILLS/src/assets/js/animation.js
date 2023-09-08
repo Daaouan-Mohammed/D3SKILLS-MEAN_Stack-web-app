@@ -29,7 +29,7 @@
       boxClass: 'wow',
       animateClass: 'animated',
       offset: 0,
-      mobile: true
+      mobile: true   //mohammed: make it false to disable the animation for mobile devises or change the disable methode down..
     };
 
     function WOW(options) {
@@ -174,7 +174,9 @@
     };
 
     WOW.prototype.disabled = function() {
-      return !this.config.mobile && this.util().isMobile(navigator.userAgent);
+    //  return !this.config.mobile && this.util().isMobile(navigator.userAgent);   //to able animation for mobile devises
+      var userAgent = navigator.userAgent;
+      return this.util().isMobile(userAgent);
     };
 
     return WOW;
