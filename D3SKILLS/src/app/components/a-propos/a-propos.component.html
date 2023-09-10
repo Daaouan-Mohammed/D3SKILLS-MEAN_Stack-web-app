@@ -19,66 +19,23 @@
                             <br>
                             <p><b>D3 SKILLS</b> est un cabinet de formation et d’accompagnement entrepreneurial, basé à
                                 Tanger. <br>
-                                <b>D</b>3 SKILLS intervient dans les domaines suivants : <a href="">la formation</a>, <a
-                                    href="">l’accompagnement entrepreneurial </a> et <a href="">le montage de
+                                <b>D</b>3 SKILLS intervient dans les domaines suivants : <a>la formation</a>, 
+                                <a>l’accompagnement entrepreneurial </a> et <a>le montage de
                                     projets.</a> <br>
-                                <b>N</b>os consultants ont la capacité de concevoir <a href="">des solutions</a> de
+                                <b>N</b>os consultants ont la capacité de concevoir <a>des solutions</a> de
                                 gestion et d’accompagnement innovantes et adaptées aux besoins de nos clients.
                             </p>
 
-                            <div class="row">
-
-                                <div class="progress-section">
+                            <div class="progress-container">
+                                <div class="progress-section" *ngFor="let stat of statistics">
                                     <div class="progress-circle">
-                                        <div class="progress-indicator">
-                                            +55
-                                        </div>
-                                        <p class="indicator-label">Projets réalisés</p>
-                                    </div>
-
-                                    <div class="progress-circle">
-                                        <div class="progress-indicator " style="color: #3498db;">
-                                            +10
-                                        </div>
-                                        <p class="indicator-label">Villes couvertes</p>
-                                    </div>
-
-                                    <div class="progress-circle">
-                                        <div class="progress-indicator">
-                                            +600
-                                        </div>
-                                        <p class="indicator-label">J/H assurés</p>
+                                        <div class="progress-indicator">{{stat.statistic}}</div>
+                                        <p class="indicator-label">{{stat.title}}</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-
-                                <div class="progress-section">
-
-                                    <div class="progress-circle">
-                                        <div class="progress-indicator" style="color: #3498db;">
-                                            +6000
-                                        </div>
-                                        <p class="indicator-label">Bénéficiaires formés</p>
-                                    </div>
-
-                                    <div class="progress-circle">
-                                        <div class="progress-indicator">
-                                            +3000
-                                        </div>
-                                        <p class="indicator-label">Porteurs de projets accompagnés</p>
-                                    </div>
-
-                                    <div class="progress-circle">
-                                        <div class="progress-indicator" style="color: #3498db;">
-                                            +100
-                                        </div>
-                                        <p class="indicator-label">Evénement organisé </p>
-                                    </div>
-
-                                </div>
-                            </div>
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -237,7 +194,7 @@
                                         <nb-card-header>Réseau</nb-card-header>
                                         <nb-card-body>
                                             <br><br>
-                                            <b>Un réseau d’appuis diversifié et solide</b>
+                                            <b>Un réseau d’appuis diversifié et solide.</b>
                                             <br><br>
                                         </nb-card-body>
                                     </nb-card>
@@ -264,7 +221,7 @@
                                         <nb-card-header>Equipe</nb-card-header>
                                         <nb-card-body>
                                             <b>Une équipe complémentaire et expérimentée pour un apport de compétences
-                                                pointues et ciblée</b>
+                                                pointues et ciblée.</b>
                                         </nb-card-body>
                                     </nb-card>
                                 </nb-card-back>
@@ -290,7 +247,7 @@
                                         <nb-card-header>Partenariats</nb-card-header>
                                         <nb-card-body>
                                             <br>
-                                            <b>Des partenariats avec des experts nationaux et étrangers</b>
+                                            <b>Des partenariats avec des experts nationaux et étrangers.</b>
                                             <br><br>
                                         </nb-card-body>
                                     </nb-card>
@@ -317,7 +274,7 @@
                                         <nb-card-header>Esprit</nb-card-header>
                                         <nb-card-body>
                                             <b>Un esprit de managers de projet, dynamiques et interactifs impliquant
-                                                activement les partenaires</b>
+                                                activement les partenaires.</b>
                                         </nb-card-body>
                                     </nb-card>
                                 </nb-card-back>
@@ -343,7 +300,7 @@
                                         <nb-card-header>Services</nb-card-header>
                                         <nb-card-body>
                                             <b>Des services porteurs de valeur ajoutée et surtout adaptés aux besoins de
-                                                nos partenaires</b>
+                                                nos partenaires.</b>
                                         </nb-card-body>
                                     </nb-card>
                                 </nb-card-back>
@@ -370,7 +327,7 @@
                                         <nb-card-body>
                                             <br>
                                             <b>Des méthodes de travail éprouvées, adaptées au contexte de chaque
-                                                client;</b>
+                                                client.</b>
                                         </nb-card-body>
                                     </nb-card>
                                 </nb-card-back>

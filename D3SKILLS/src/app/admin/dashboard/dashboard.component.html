@@ -52,7 +52,6 @@
     </li>
   </ul>
 </section>
-<!-- SIDEBAR -->
 <!-- CONTENT -->
 <section id="content">
   <!-- NAVBAR -->
@@ -62,16 +61,11 @@
       <a class="nav-link">Administration</a>
     </nav>
     <nav>
-     <!--<a class="notification">
-        <i class='bx bxs-bell'></i>
-        <span class="num">8</span>
-      </a>--> 
       <a class="profile">
         <img src="../../../assets/images/transparent-logo small.png">
       </a>
     </nav>
   </nav>
-  <!-- NAVBAR -->
   <!-- MAIN -->
   <main>
     <div class="head-title">
@@ -94,29 +88,30 @@
         </a>
       </button>
     </div>
-    <ul class="box-info">
-      <li>
-        <i class='bx bxs-calendar-check'></i>
-        <span class="text">
-          <h3>55</h3>
-          <p>Projets réalisés</p>
-        </span>
-      </li>
-      <li>
-        <i class='bx bxs-group'></i>
-        <span class="text">
-          <h3>6000</h3>
-          <p>Bénéficiaires formés</p>
-        </span>
-      </li>
-      <li>
-        <i class='bx bxs-dollar-circle'></i>
-        <span class="text">
-          <h3>100</h3>
-          <p>Evénement organisé</p>
-        </span>
-      </li>
-    </ul>
+    <!--statistics-->
+    <div class="container">
+      <div class="row ">
+        <div class="col-xl-6 col-lg-6" *ngFor="let stat of statistics">
+          <div class="card l-bg-blue-dark">
+            <div class="card-statistic-3 p-4">
+              <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+              <div class="mb-4">
+                <h6 class="card-title mb-0" style="color: whitesmoke;">{{stat.title}}</h6>
+              </div>
+              <div class="row align-items-center mb-2 d-flex">
+                <div class="col-8">
+                  <h2 class="d-flex align-items-center mb-0" style="color: whitesmoke;">{{stat.statistic}}</h2>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <button (click)="editStatisticDialoge(stat, '1000ms', '500ms')" type="button" class="btn btn-outline-success" style="width: 50%; margin-left: 5px;"><i class="fa fa-trash"></i> Update</button>
+                <button (click)="onDeleteStatistic(stat._id)" type="button" class="btn btn-outline-danger" style="width: 50%; margin-left: 5px;"><i class="fa fa-edit"></i> Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <nb-layout>
       <nb-layout-column>

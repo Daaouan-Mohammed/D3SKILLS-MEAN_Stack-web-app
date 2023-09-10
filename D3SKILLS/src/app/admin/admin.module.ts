@@ -17,6 +17,7 @@ import { ReferenceFormComponent } from './reference-form/reference-form.componen
 import { GalerieFormComponent } from './galerie-form/galerie-form.component';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
+import { StatisticFormComponent } from './statistic-form/statistic-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatListModule} from '@angular/material/list';
     LoginFormComponent,
     ServiceFormComponent,
     ReferenceFormComponent,
-    GalerieFormComponent
+    GalerieFormComponent,
+    StatisticFormComponent
   ],
   imports: [
     CommonModule,

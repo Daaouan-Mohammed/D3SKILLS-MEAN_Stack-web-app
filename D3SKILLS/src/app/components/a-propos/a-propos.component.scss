@@ -11,39 +11,44 @@
   }
 }
 
-.progress-section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
-  
-    .progress-circle {
-      width: 145px;
-      height: 145px;
-      border-radius: 50%;
-      background-color: #f3f3f3d2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      position: relative;
-      transition: transform 0.3s ease-in-out;
-  
-      &:hover {
-        transform: scale(1.05);
+.progress-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); // Adjust the minmax value as needed
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  .progress-section {
+      .progress-circle {
+          width: 140px;
+          height: 145px;
+          border-radius: 50%;
+          background-color: #f3f3f3c0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          position: relative;
+          transition: transform 0.3s ease-in-out;
+
+          &:hover {
+              transform: scale(1.15);
+          }
+
+          .progress-indicator {
+              font-size: 24px;
+              font-weight: bold;
+              color: #3498db;
+          }
+
+          .indicator-label {
+              text-align: center;
+              margin-top: 5px;
+              color: orange;
+          }
       }
-  
-      .progress-indicator {
-        font-size: 24px;
-        font-weight: bold;
-        color: orange; // Change to your preferred color
-      }
-  
-      .indicator-label {
-        text-align: center;
-        margin-top: 5px;
-        color: #555; // Change to your preferred color
-      }
-    }
   }
+}
+
   

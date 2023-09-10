@@ -1,16 +1,23 @@
-import { ChangeDetectionStrategy, Component , OnInit, AfterViewInit, ElementRef, Renderer2} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { StatisticsService } from 'src/app/services/statistics.service';
+//import {ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'app-a-propos',
   templateUrl: './a-propos.component.html',
   styleUrls: ['./a-propos.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AProposComponent implements OnInit, AfterViewInit{
-  constructor(private renderer: Renderer2, private el: ElementRef) { }
+export class AProposComponent implements OnInit, AfterViewInit {
+  statistics: any;
+
+  constructor(private renderer: Renderer2, private el: ElementRef, private _statistic: StatisticsService) { }
 
   ngOnInit() {
-    // Initialization tasks that don't require the view to be rendered
+    this._statistic.getStatistics().subscribe((statistics: any) => {
+      this.statistics = statistics;
+      console.log(statistics);
+    })
   }
 
   ngAfterViewInit() {

@@ -10,6 +10,7 @@ const serviceRoutes = require('./routes/service');
 const subServiceRoutes = require('./routes/subService');
 const referenceRoutes = require('./routes/reference');
 const galerieRoutes = require('./routes/galerie');
+const statisticRoutes = require('./routes/statistic');
 const demandeDevisRoutes = require('./routes/demandeDevis');
 const userRoutes = require('./routes/user');
 
@@ -39,6 +40,7 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/services/:serviceId/subServices', subServiceRoutes);
 app.use('/api/references', referenceRoutes);
 app.use('/api/galerie', galerieRoutes);
+app.use('/api/statistics', statisticRoutes);
 app.use('/api/demandeDevis', demandeDevisRoutes);
 app.use('/image', express.static(path.join(__dirname, 'image')));//__dirname = directory name
 
