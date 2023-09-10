@@ -6,3 +6,19 @@
 .partners img:hover{
     box-shadow: 0 0 5px 1px #87e9f0;
 }
+
+/* Define custom styles for the button */
+.custom-btn {
+    border-radius: 40px;
+    transition: background-color 0.3s, border-color 0.3s; 
+    float: right; 
+    margin-right: 100px;
+    padding: 10px 30px;
+  
+    &:hover {
+      background-color: orange; 
+      border-color: orange; 
+      color: white;
+    }
+  }
+  

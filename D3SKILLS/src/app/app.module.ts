@@ -23,6 +23,7 @@ import { Contact2Component } from './components/contact2/contact2.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { WebReqInterceptor } from './services/web-req.interceptor';
+import { RefsPageComponent } from './components/refs-page/refs-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WebReqInterceptor } from './services/web-req.interceptor';
     FooterComponent,
     AccueilComponent,
     Contact2Component,
-    LayoutComponent
+    LayoutComponent,
+    RefsPageComponent
   ],
   imports: [
     BrowserModule,

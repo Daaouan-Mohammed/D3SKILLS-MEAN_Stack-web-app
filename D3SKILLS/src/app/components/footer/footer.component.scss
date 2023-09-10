@@ -1,0 +1,21 @@
+/* Style for circular social media icons */
+.social-icon {
+    display: inline-block;
+    width: 40px; // Adjust the size as needed
+    height: 40px; // Adjust the size as needed
+    background-color: #3498db; // Background color for the circle
+    border-radius: 50%; // Makes it a circle
+    text-align: center;
+    line-height: 40px; // Vertically centers the icon
+    margin-right: 20px; // Adds spacing between icons
+    color: whitesmoke; // Icon color
+    text-decoration: none; // Removes underline from the links
+    font-size: 20px; // Adjust the font size of the icon
+    transition: background-color 0.3s; // Smooth transition on hover
+  }
+  
+  /* Change the background color on hover */
+  .social-icon:hover {
+    background-color: orange; // Change to the desired hover color
+  }
+  

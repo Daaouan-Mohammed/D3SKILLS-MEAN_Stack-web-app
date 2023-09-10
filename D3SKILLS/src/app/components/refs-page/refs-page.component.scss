@@ -1,0 +1,54 @@
+.refs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 90px;
+}
+
+.example-card {
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    margin: 15px;
+}
+
+img {
+    height: 300px;
+    min-width: 250px;
+}
+
+img:hover {
+    box-shadow: 0 0 5px 1px #87e9f0;
+}
+
+.custom-btn {
+    border-radius: 40px;
+    transition: background-color 0.3s, border-color 0.3s; 
+    float: right; 
+    margin: 20px 100px;
+    padding: 10px 30px;
+  
+    &:hover {
+      background-color: orange; 
+      border-color: orange; 
+      color: white;
+    }
+  }
+
+/* footer */
+.social-icon {
+    display: inline-block;
+    width: 40px; 
+    height: 40px; 
+    background-color: #52afed; 
+    border-radius: 50%; 
+    text-align: center;
+    line-height: 40px; 
+    margin-right: 20px; 
+    color: whitesmoke; 
+    text-decoration: none; 
+    font-size: 20px; 
+    transition: background-color 0.3s; 
+}
+.social-icon:hover {
+    background-color: orange; // Change to the desired hover color
+}
