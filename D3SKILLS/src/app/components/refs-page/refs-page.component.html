@@ -3,6 +3,41 @@
 <nb-layout>
 
     <nb-layout-column class="refs">
+        <mat-card class="example-card">
+            <img mat-card-image src='../../../assets/images/afem.png' alt="Photo of a reference">
+            <mat-card-header>
+                <mat-card-title>afem</mat-card-title>
+                <mat-card-subtitle>Entrepreneuriat féminin</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <mat-card class="example-card">
+            <img mat-card-image src='../../../assets/images/pme.png' alt="Photo of a reference">
+            <mat-card-header>
+                <mat-card-title>Maroc PME</mat-card-title>
+                <mat-card-subtitle>Accompagnement entrepreneurial</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <mat-card class="example-card">
+            <img mat-card-image src='../../../assets/images/apefe.png' alt="Photo of a reference">
+            <mat-card-header>
+                <mat-card-title>APEFE Bruxelles</mat-card-title>
+                <mat-card-subtitle>Entrepreneuriat féminin</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <mat-card class="example-card">
+            <img mat-card-image src='../../../assets/images/es.jpg' alt="Photo of a reference">
+            <mat-card-header>
+                <mat-card-title>ES Maroc</mat-card-title>
+                <mat-card-subtitle>Entrepreneuriat des jeunes</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <mat-card class="example-card">
+            <img mat-card-image src='../../../assets/images/iom.png' alt="Photo of a reference">
+            <mat-card-header>
+                <mat-card-title>OIM Maroc</mat-card-title>
+                <mat-card-subtitle>Entrepreneuriat et insertion professionnelle</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
         <mat-card class="example-card" *ngFor="let ref of references">
             <img mat-card-image [src]="ref.imageUrl" alt="Photo of a reference">
             <mat-card-header>
@@ -10,11 +45,11 @@
                 <mat-card-subtitle>{{ ref.description }}</mat-card-subtitle>
             </mat-card-header>
         </mat-card>
-        <button type="button" class="btn btn-outline-primary custom-btn" routerLink="/"><i class="bi bi-arrow-return-left"></i>    Retour</button>
-
 
         <div class="container">
             <div class="row">
+                <button type="button" class="btn btn-outline-primary custom-btn" style="width: 250px;" routerLink="/"><i class="bi bi-arrow-return-left"></i> Retour</button>
+
                 <div class="col-lg-12" style="text-align: center;">
                     <br><br>
                     <p><b>D3 SKILLS: Tanger</b> <br> Formation & Conseil & Accompagnement entrepreneurial. <br>© 2023 -
